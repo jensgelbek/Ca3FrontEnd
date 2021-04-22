@@ -1,7 +1,7 @@
 const USER_BASE =
-  "https://peterrambeckandersen.com/tomcat/insession-starter/api"
+  "https://osvaldo.dk/tomcat/ca3/api"
 const INFO_BASE =
-  "https://peterrambeckandersen.com/tomcat/insession-starter/api/info"
+  "https://osvaldo.dk/tomcat/ca3/api/info"
 
 const USER = {
   LOGIN: `${USER_BASE}/login`,
@@ -12,6 +12,7 @@ const INFO = {
   ADMIN: `${INFO_BASE}/admin`,
   FETCH_MANY: `${INFO_BASE}/fetchMany`,
   FETCH_ONE: `${INFO_BASE}/fetchData`,
+  FETCH_STARWARS: `${INFO_BASE}/starwars`,
 }
 
 export {USER, INFO}

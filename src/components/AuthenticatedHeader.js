@@ -17,7 +17,10 @@ function AuthenticatedHeader(props) {
           <LinkContainer to="/muchdata">
             <Nav.Link>Much data</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/user">
+          <LinkContainer to="/starwars">
+            <Nav.Link>Starwars Quiz</Nav.Link>
+          </LinkContainer>
+            <LinkContainer to="/user">
             <Nav.Link>User data</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/admin">
