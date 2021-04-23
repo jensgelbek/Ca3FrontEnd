@@ -8,13 +8,21 @@ function StarWarsPage() {
   const [starWarsData, setStarWarsData] = React.useState();
   const [error, setError] = React.useState();
   const [correct, setCorrect] = React.useState("");
+  const [refresh,setRefresh]=React.useState(1);
  
   
   React.useEffect(() => {
     fetchData(INFO.FETCH_STARWARS)
       .then((data) => setStarWarsData(data))
-      .catch((error) => handleError(error, setError));
-  }, []);
+      .catch((error) => handleError(error, setError)
+      .then(setCorrect("")));
+  }, [refresh]);
+
+  React.useEffect(()=>{
+    fetchData(INFO.POST_QUESTION,"POST",starWarsData)
+     .then()
+     .catch((error) => handleError(error, setError))
+  },[starWarsData])
 
 function handleClick(event) {
     event.preventDefault();
@@ -22,20 +30,27 @@ function handleClick(event) {
     else {setCorrect("Wrong  "+ event.target.value+" is not the answer")}
    
   }
+  function refreshQuestion(event){
+        setRefresh(refresh+1);
+  }
   
   return (
     <CenteredContainer>
       <h1>Welcome to my fabolous Star Wars Quiz</h1>
-      {error && <h4>{error.message}</h4>}
-      {starWarsData && <div><h4>{starWarsData.question}</h4>
       
-        <ButtonGroup aria-label="Basic example">
+      {starWarsData && <div ><p><h4>{starWarsData.question}</h4></p></div>}
+       {starWarsData &&
+       <div>
+       <p> <ButtonGroup aria-label="Basic example">
           <Button   variant="secondary" value={starWarsData.answer1} onClick={handleClick}> {starWarsData.answer1} </Button>
           <Button variant="secondary" value={starWarsData.answer2} onClick={handleClick}>{starWarsData.answer2}</Button>
           <Button variant="secondary" value={starWarsData.answer3} onClick={handleClick}>{starWarsData.answer3}</Button>
         </ButtonGroup>
+        </p>
       </div>}
-      <div>{correct}</div>
+      <p>{correct}</p>
+      <p> <Button variant="secondary" onClick={refreshQuestion}>New question</Button></p>
+     
     </CenteredContainer>
   );
 }
