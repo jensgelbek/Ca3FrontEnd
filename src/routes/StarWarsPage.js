@@ -19,6 +19,7 @@ function StarWarsPage() {
   }, [refresh]);
 
   React.useEffect(()=>{
+    setCorrect("");
     fetchData(INFO.POST_QUESTION,"POST",starWarsData)
      .then()
      .catch((error) => handleError(error, setError))
